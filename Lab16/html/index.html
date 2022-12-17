@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSockets</title>
+    <script type="text/javascript">
+        let ws = null;
+
+        function connect() {
+            ws = new WebSocket("ws://127.0.0.1:48080/Lab16/websockets");
+
+            ws.onmessage = function (event) {
+                document.getElementById('result').innerHTML += "Time: " + event.data + "<br/>";
+            };
+        }
+
+        function disconnect() {
+            ws.close();
+        }
+    </script>
+</head>
+<style>
+    button {
+        display: block;
+        width: 120px;
+        background-color: black;
+        font-size: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+        color: white;
+        padding: 8px;
+        margin: 10px;
+    }
+
+    button:hover {
+        color: black;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #result {
+        margin-left: 15px;
+        font-size: 18px;
+    }
+</style>
+<body>
+<button onclick="connect()">START</button>
+<button onclick="disconnect()">STOP</button>
+<div id="result"></div>
+</body>
+</html>

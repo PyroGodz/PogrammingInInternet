@@ -1,0 +1,51 @@
+<html>
+<head><title>Lab 11</title></head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="../js/Header.js"></script>
+<script type="text/javascript" src="../js/XML.js"></script>
+<script type="text/javascript" src="../js/Fill_JSON.js"></script>
+<script>
+function sync(x, y, z, n){
+OnClick_Header_sync(x, y, z);
+OnClick_JSON_sync(n, document.getElementById('json'));
+OnClick_XML_sync(n, document.getElementById('xml'));
+};
+	$(window).on('load', function() {
+		$("[name='fbtn']").click(function(){
+			$.ajax({
+			type : "get",
+			url : "http://localhost:8080/lab11/Sss_JSON_sync",
+			data : "n=8",
+			success : function(msg) {
+			$('#json2').html(msg);
+			$('#json2').removeClass('h2');
+			$('#json2').addClass('h1');
+			},
+			dataType : 'text'
+			});
+			});
+		});
+</script>
+<body>
+<h3>AJAX Example</h3>
+<form name="FHeader" action="#" method="POST">
+	<input name="x" type="text" value="0" size="5" maxlength="5"/>
+	<input name="y" type="text" value="0" size="5" maxlength="5"/>
+	<br /><input 	name="z" id="z" type="text" value="0"/>
+	<br/>
+	<br><input name="n1" type="text" value="0" size="2" maxlength="2" />
+	<br>XML: <span id="xml" class="h2">.....</span>
+	<br>JSON: <span id="json" class="h2">.....</span>
+
+
+	<br /><input value="Do" type="button" onclick="sync(this.form.x, this.form.y, this.form.z, n1)"/>
+</form>
+
+<br/>
+<form name="FJSON" action="#" method="POST">
+    <input name="n" type="text" value="0" size="2" maxlength="2" />
+    <br /><br /><input name="fbtn" value="Rand" type="button" size="10" maxlength="10" id="btn"/>
+    <br /><p id="json2" class="h2"></p>
+</form>
+</body>
+</html>

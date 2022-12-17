@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Lab11</title>
+</head>
+<style type="text/css">
+    .h1 {visibility: visible;}
+    .h2 {visibility: hidden }
+</style>
+<body>
+<script type="text/javascript" src="../js/crReq.js"></script>
+<script type="text/javascript"> var req = crReq();</script>
+<script type="text/javascript" src="../js/Fill_JSON.js"></script>
+
+<h3>AJAX Example (JSON)</h3>
+<form name="FJSON" action="#" method="POST">
+    <label><strong>n:</strong><input name="n" type="text" value="0" size="2" maxlength="2" /></label>
+    <br /><br /><input name="BRand" value="Rand" type="button" size="10" maxlength="10" onclick="OnClick_JSON(this.form.n.value,
+					document.getElementById('json'));" />
+    <br /><br /><span id="json" class="h2">.....</span>
+</form>
+</body>

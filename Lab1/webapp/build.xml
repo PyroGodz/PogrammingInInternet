@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="HelloWorld" default="copy">
+    <target name="init">
+        <property name = "server" value = "D:\Soft\Java\TomCat\" />
+        <property name = "work" value = "D:\study\pii\Lab1\" />
+    </target>
+    <target name="create" depends="init">
+        <delete dir="${server}\webapps\Lab1" />
+        <mkdir dir="${server}\webapps\Lab1" />
+        <mkdir dir="${server}\webapps\Lab1\html" />
+        <mkdir dir="${server}\webapps\Lab1\image" />
+        <mkdir dir="${server}\webapps\Lab1\WEB-INF" />
+    </target>
+
+    <target name="copy" depends ="create">
+        <copy file= "${work}\webapp\WEB-INF\web.xml"
+              todir="${server}\webapps\Lab1\WEB-INF" />
+        <copy file= "${work}\webapp\html\index.html"
+              todir="${server}\webapps\Lab1\" />
+        <copy file= "${work}\webapp\html\address.html"
+              todir="${server}\webapps\Lab1\html" />
+        <copy file= "${work}\webapp\html\education.html"
+              todir="${server}\webapps\Lab1\html" />
+        <copy file= "${work}\webapp\image\pic.jpg"
+              todir="${server}\webapps\Lab1\image" />
+    </target>
+</project>
